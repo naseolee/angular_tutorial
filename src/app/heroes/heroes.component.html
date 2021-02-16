@@ -1,0 +1,28 @@
+<p>heroes works!</p>
+<h2>{{hero.name | uppercase}} Details</h2>
+<h2>所持金：{{hero.money | currency }} </h2>
+<div><span>id:</span>{{hero.id}}</div>
+<h2>my heroes</h2>
+<ul class="heroes">
+    <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+        <span class="badge">{{hero.id}}</span>{{hero.name}}&nbsp;&nbsp;{{hero.money}}円
+    </li>
+</ul>
+
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<div>
+    <label>name:
+        <input [(ngModel)]="hero.name" placeholder="name" />
+    </label>
+</div>
+<div *ngIf="selectedHero">
+    <h2>{{selectedHero.name | uppercase}} Details</h2>
+    <div><span>id:</span>{{selectedHero.id}}</div>
+    <div>
+        <label>name:
+            <input [(ngModel)]="selectedHero.name" placeholder="name" />
+            <input [(ngModel)]="selectedHero.money" plaseholder="money" />
+        </label>
+    </div>
+</div>
+
